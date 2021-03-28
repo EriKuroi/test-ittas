@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Minsk",
+        "weather": "sun",
+        "temp": "27",
+        "humid": "52",
+        "pressure": "1015",
+        "windStr": "3.02",
+        "windDir": "north",
+        "refresh": "01 March 2021 09.00.00"
+    }
+]
