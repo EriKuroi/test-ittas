@@ -1,9 +1,13 @@
-@use 'library' as lib; 
+@use 'library'as lib;
 
-main{
-    width: 100%;
+main {
     height: 100%;
     min-height: 90vh;
     background: lib.$air;
     background: linear-gradient(140deg, lib.$air 0%, lib.$sea 100%);
+    padding: 20px;
+    font-size: 1.1em;
+    display: flex;
+    flex-flow: wrap;
+
 }

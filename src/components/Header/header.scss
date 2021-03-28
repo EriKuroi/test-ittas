@@ -1,8 +1,7 @@
 @use '../../library' as lib; 
 
 header{
-width: 100%;
-// background-color: white;
+background-color: white;
 color: lib.$forest;
 text-align: center;
 font-size: 1.3rem;
@@ -10,10 +9,12 @@ font-weight: bold;
 display: flex;
 justify-content: center;
 align-items: center;
+
 }
 .main-header{
-    height: 10vh;
-    min-height: 70px;
+    // height: 10vh;
+    // min-height: 70px;
+    height: lib.$header-height;
     h1{
         margin: 5px;
     }

@@ -8,8 +8,12 @@
     border: none;
     border-radius: 10px;
     color: white;
-    background-color: lib.$sea;   
+    background-color: lib.$sea;  
+    &:hover{
+        cursor: pointer;
+        background-color: lib.$forest;
+    } 
 }
  .delete{
-        background-color: lib.$air;
+        background-color: lib.$stone;
     }
