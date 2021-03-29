@@ -2,8 +2,12 @@ import './button.scss';
 import PropTypes from 'prop-types';
 
 const Button =({text})=>{
+    let delButtonClass
+    if(text === 'Удалить'){
+    delButtonClass = 'button__delete';
+    }
     return (
-        <button className={`${text.toLowerCase()} button`}>
+        <button className={`button ${delButtonClass? delButtonClass: ''}`}>
             {text}
         </button>
     )

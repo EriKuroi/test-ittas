@@ -9,7 +9,7 @@ const Header = () => {
     ]
     return (
         <header className="main-header">
-            <h1>Select city to track</h1>
+            <h1>Выберите город</h1>
             <div className="main-header__select-area">
                 <Select options={options}></Select>
             </div>

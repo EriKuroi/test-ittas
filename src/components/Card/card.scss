@@ -1,22 +1,28 @@
 @use '../../library'as lib;
 
 .city-card {
-    width: 300px;    
+    width: 350px;
     height: 300px;
     border: 4px solid white;
     border-radius: 10px;
     margin: 0 20px 20px 0;
     color: white;
     overflow: hidden;
-    line-height: 1.9;
-    div {
-        padding: 5px;
+    // line-height: 1.9;
+
+    article {
+        height: 89%;
+        padding-left: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
     }
 }
 
 .city-card__button-area {
     text-align: center;
 }
-.city-card__arrow{
+
+.city-card__arrow {
     width: 15px;
 }

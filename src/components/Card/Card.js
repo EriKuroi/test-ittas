@@ -1,24 +1,30 @@
 import './card.scss';
-import {ReactComponent as Arrow} from '../../assets/arrow-up-solid.svg';
+import { ReactComponent as Arrow } from '../../assets/arrow-up-solid.svg';
 import Button from '../Button/Button';
 const Card = ({ city, refresh }) => {
+    const handleDeleteButton = () => {
+
+    };
+    const handleRefreshButton = () => {
+
+    };
     return (
-        <article className="city-card">
+        <aside className="city-card">
             <header>
                 {city.name}
             </header>
-            <div>
-                <p>Temperature: {city.main.temp}&#176;C </p>
-                <p>Humidity: {city.main.humidity}% </p>
-                <p>Pressure: {city.main.pressure}</p>
-                <p>Wind strength and direction: {city.wind.speed} <Arrow className="city-card__arrow" style={{'transform': `rotate(${city.wind.deg}deg)`}}/></p>
-                <p>Last refresh: {refresh}</p>
+            <article>
+                <p>Температура: {city.main.temp}&#176;C <img alt={city.weather[0].main} src={`http://openweathermap.org/img/wn/${city.weather[0].icon}.png`}></img></p>
+                <p>Влажность: {city.main.humidity}% </p>
+                <p>Давление: {city.main.pressure}</p>
+                <p>Сила и направление ветра: {city.wind.speed}м\с <Arrow className="city-card__arrow" style={{ 'transform': `rotate(${city.wind.deg}deg)` }} /></p>
+                <p>Последнее обновление: {refresh}</p>
                 <div className="city-card__button-area">
-                    <Button text="Delete" />
-                    <Button text="Refresh" />
+                    <Button text="Удалить" onClick={handleDeleteButton} />
+                    <Button text="Обновить" onClick={handleRefreshButton} />
                 </div>
-            </div>
-        </article>
+            </article>
+        </aside>
     )
 };
 
