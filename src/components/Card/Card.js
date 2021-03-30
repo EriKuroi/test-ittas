@@ -3,10 +3,8 @@ import { ReactComponent as Arrow } from '../../assets/arrow-up-solid.svg';
 import Button from '../Button/Button';
 const Card = ({ city, refresh }) => {
     const handleDeleteButton = () => {
-
     };
     const handleRefreshButton = () => {
-
     };
     return (
         <aside className="city-card">

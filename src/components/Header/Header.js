@@ -1,17 +1,27 @@
 import './header.scss'
 import Select from 'react-select'
+import cities from '../../mock-cities.json';
 
-const Header = () => {
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-    ]
-    return (
+const Header = ({ handleCityChoise }) => {
+    const options = cities.map(elem => { return { 'value': elem.id, 'label': elem.name } })
+     return (
         <header className="main-header">
             <h1>Выберите город</h1>
             <div className="main-header__select-area">
-                <Select options={options}></Select>
+                <Select
+                    theme={(theme) => ({
+                        ...theme,
+                        colors: {
+                            ...theme.colors,
+                            text: '#015249',
+                            primary25: '#77c9d4',
+                            primary: '#015249',
+                        },
+                    })}
+                    placeholder="Название"
+                    options={options}
+                    onChange={handleCityChoise}
+                ></Select>
             </div>
         </header>
     )

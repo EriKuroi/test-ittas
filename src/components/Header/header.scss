@@ -1,26 +1,26 @@
-@use '../../library' as lib; 
+@use '../../library'as lib;
 
-header{
-background-color: white;
-color: lib.$forest;
-text-align: center;
-font-size: 1.3rem;
-font-weight: bold;
-display: flex;
-justify-content: center;
-align-items: center;
+header {
+    background-color: white;
+    color: lib.$forest;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
-.main-header{
-    // height: 10vh;
-    // min-height: 70px;
+
+.main-header {
     height: lib.$header-height;
-    h1{
-        margin: 5px;
+
+    h1 {
+        margin-right: 20px;
     }
-    .main-header__select-area{
+
+    .main-header__select-area {
         width: 60%;
-        color: lib.$forest;
         font-weight: normal;
     }
 }
