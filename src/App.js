@@ -16,15 +16,20 @@ function App() {
       console.log(error);
     }
   };
-  const handleCityChoise = async (e) => {
+  const handleCityChoice = async (e) => {
     const data = await getChosenCity(e.value)
     const newTracked = tracked.map(city => city);
-    newTracked.push(data);
+    const cityIndex = newTracked.findIndex(city => city.id === e.value);
+    if(cityIndex !== -1){
+      newTracked[cityIndex] = data;
+    }else{
+      newTracked.push(data);
+    }
     setTracked(newTracked);
   }
   return (
     <>
-      <Header handleCityChoise={handleCityChoise} />
+      <Header handleCityChoice={handleCityChoice} />
       <main>
         {!!tracked.length &&
           tracked.map(elem => <Card key={uuid()} city={elem} />)
