@@ -29,12 +29,18 @@ function App() {
     }
     setTracked(newTracked);
   }
+  const deleteCard = (id) => {
+    const index = tracked.findIndex(city => city.id === id)
+    const newTracked = tracked.map(city => city);
+    newTracked.splice(index, 1);
+    setTracked(newTracked);
+  }
   const handleCardButtons = (type, id) => {
     if (type === 'ref') {
       handleCityChoice({ 'value': id })
     };
     if (type === 'del') {
-      console.log(id)
+      deleteCard(id);
     }
   };
   return (
