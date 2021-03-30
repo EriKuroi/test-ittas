@@ -20,6 +20,8 @@ function App() {
     const data = await getChosenCity(e.value)
     const newTracked = tracked.map(city => city);
     const cityIndex = newTracked.findIndex(city => city.id === e.value);
+    const time = Date.now();
+    data.refreshTime = time;
     if(cityIndex !== -1){
       newTracked[cityIndex] = data;
     }else{
