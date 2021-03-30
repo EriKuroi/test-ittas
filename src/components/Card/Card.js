@@ -1,17 +1,23 @@
 import './card.scss';
 import { ReactComponent as Arrow } from '../../assets/arrow-up-solid.svg';
 import Button from '../Button/Button';
-const Card = ({ city }) => {
-    const handleDeleteButton = () => {
-    };
-    const handleRefreshButton = () => {
-    };
+const Card = ({ city, handleCardButtons }) => {
+
+    const handleClick = (e) => {
+        if (e.target.classList.contains('button')) {
+            if (e.target.classList.contains('button__delete')) {
+                handleCardButtons('del', city.id)
+            } else {
+                handleCardButtons('ref', city.id)
+            }
+        }
+    }
     const timeInDate = new Date(city.refreshTime);
     let options = { year: 'numeric', month: 'long', day: 'numeric' };
     const dateForHumans = timeInDate.toLocaleString('ru-BY', options).substring(0, 13);
     const timeForHumans = timeInDate.toTimeString();
     return (
-        <aside className="city-card">
+        <aside className="city-card" onClick={handleClick}>
             <header>
                 {city.name}
             </header>
@@ -35,8 +41,8 @@ const Card = ({ city }) => {
                     <span>{timeForHumans.slice(0, 17)}</span>
                 </p>
                 <div className="city-card__button-area">
-                    <Button text="Удалить" onClick={handleDeleteButton} />
-                    <Button text="Обновить" onClick={handleRefreshButton} />
+                    <Button text="Удалить" />
+                    <Button text="Обновить" />
                 </div>
             </article>
         </aside>
