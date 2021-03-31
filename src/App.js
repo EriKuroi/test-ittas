@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import Card from './components/Card/Card';
 import uuid from 'react-uuid';
+import { getChosenCity, saveToLocalStorage, createCityObject } from './functions';
 
 function App() {
   const [tracked, setTracked] = useState([]);
@@ -13,31 +14,17 @@ function App() {
       setTracked(localStorageParsed);
     }
   }, [])
-  const getChosenCity = async (id) => {
-    try {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&appid=64e98969cdc8ec3dd3bf5d5a19a4b3b5&lang=ru`);
-      if (!response.ok) {
-        throw Error(response.statusText);
-      } else return response.json();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const saveToLocalStorage = (stateArray) => {
-    const localStorageString = JSON.stringify(stateArray);
-    localStorage.setItem('localStorageString', localStorageString);
-  } 
-  const handleCityChoice = async (e) => {
-    const data = await getChosenCity(e.value)
+
+  const handleCityChoice = async (chosen) => {
+    const data = await getChosenCity(chosen.value)
     const newTracked = tracked.map(city => city);
-    const cityIndex = newTracked.findIndex(city => -city.id === -e.value);
-    const time = Date.now();
-    data.refreshTime = time;
-    data.name = e.label;
+    const cityIndex = newTracked.findIndex(city => -city.id === -chosen.value);
+    data.name = chosen.label;
+    const cityInfo = createCityObject(data);
     if (cityIndex !== -1) {
-      newTracked[cityIndex] = data;
+      newTracked[cityIndex] = cityInfo;
     } else {
-      newTracked.push(data);
+      newTracked.push(cityInfo);
     }
     setTracked(newTracked);
     saveToLocalStorage(newTracked);
@@ -49,15 +36,15 @@ function App() {
     setTracked(newTracked);
     saveToLocalStorage(newTracked);
   }
-  const handleCardButtons = (type, id) => {
+  const handleCardButtons = (type, id, name) => {
     if (type === 'ref') {
-      handleCityChoice({ 'value': id })
+      handleCityChoice({ 'value': id, 'label': name })
     };
     if (type === 'del') {
       deleteCard(id);
     }
   };
-
+  
   return (
     <>
       <Header handleCityChoice={handleCityChoice} />

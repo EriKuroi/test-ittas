@@ -1,6 +1,8 @@
 import './header.scss';
 import Select from 'react-select';
 import cities from '../../capitals.json';
+import PropTypes from 'prop-types';
+
 const Header = ({ handleCityChoice }) => {
      return (
         <header className="main-header">
@@ -23,6 +25,13 @@ const Header = ({ handleCityChoice }) => {
             </div>
         </header>
     )
+};
+
+Header.propTypes = {
+    handleCityChoice: PropTypes.func,
+};
+Header.defaultProps = {
+    handleCityChoice: ()=>{console.error('Oops, cant find handleCityChoice function')},
 };
 
 export default Header
