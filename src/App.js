@@ -23,6 +23,10 @@ function App() {
       console.log(error);
     }
   };
+  const saveToLocalStorage = (stateArray) => {
+    const localStorageString = JSON.stringify(stateArray);
+    localStorage.setItem('localStorageString', localStorageString);
+  } 
   const handleCityChoice = async (e) => {
     const data = await getChosenCity(e.value)
     const newTracked = tracked.map(city => city);
@@ -36,14 +40,14 @@ function App() {
       newTracked.push(data);
     }
     setTracked(newTracked);
-    const localStorageString = JSON.stringify(newTracked);
-    localStorage.setItem('localStorageString', localStorageString);
+    saveToLocalStorage(newTracked);
   }
   const deleteCard = (id) => {
     const index = tracked.findIndex(city => city.id === id)
     const newTracked = tracked.map(city => city);
     newTracked.splice(index, 1);
     setTracked(newTracked);
+    saveToLocalStorage(newTracked);
   }
   const handleCardButtons = (type, id) => {
     if (type === 'ref') {
