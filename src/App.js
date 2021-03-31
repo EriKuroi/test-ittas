@@ -5,6 +5,7 @@ import Card from './components/Card/Card';
 import uuid from 'react-uuid';
 
 function App() {
+  // найті айді кіева
   const [tracked, setTracked] = useState([]);
   const getChosenCity = async (id) => {
     try {
@@ -19,9 +20,10 @@ function App() {
   const handleCityChoice = async (e) => {
     const data = await getChosenCity(e.value)
     const newTracked = tracked.map(city => city);
-    const cityIndex = newTracked.findIndex(city => city.id === e.value);
+    const cityIndex = newTracked.findIndex(city => -city.id === -e.value);
     const time = Date.now();
     data.refreshTime = time;
+    data.name = e.label;
     if (cityIndex !== -1) {
       newTracked[cityIndex] = data;
     } else {
@@ -43,6 +45,7 @@ function App() {
       deleteCard(id);
     }
   };
+
   return (
     <>
       <Header handleCityChoice={handleCityChoice} />

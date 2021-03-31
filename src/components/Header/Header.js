@@ -1,9 +1,7 @@
-import './header.scss'
-import Select from 'react-select'
-import cities from '../../mock-cities.json';
-
+import './header.scss';
+import Select from 'react-select';
+import cities from '../../capitals.json';
 const Header = ({ handleCityChoice }) => {
-    const options = cities.map(elem => { return { 'value': elem.id, 'label': elem.name } })
      return (
         <header className="main-header">
             <h1>Выберите город</h1>
@@ -19,7 +17,7 @@ const Header = ({ handleCityChoice }) => {
                         },
                     })}
                     placeholder="Название"
-                    options={options}
+                    options={cities}
                     onChange={handleCityChoice}
                 ></Select>
             </div>
