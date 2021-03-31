@@ -1,6 +1,8 @@
 import './card.scss';
 import { ReactComponent as Arrow } from '../../assets/arrow-up-solid.svg';
 import Button from '../Button/Button';
+import ReactTooltip from 'react-tooltip';
+
 const Card = ({ city, handleCardButtons }) => {
 
     const handleClick = (e) => {
@@ -25,6 +27,7 @@ const Card = ({ city, handleCardButtons }) => {
                 <p>Температура: {city.main.temp}&#176;C
                     <img
                         alt={city.weather[0].main}
+                        data-tip={city.weather[0].description}
                         src={`http://openweathermap.org/img/wn/${city.weather[0].icon}.png`}
                     ></img>
                 </p>
@@ -44,6 +47,7 @@ const Card = ({ city, handleCardButtons }) => {
                     <Button text="Удалить" />
                     <Button text="Обновить" />
                 </div>
+                <ReactTooltip />
             </article>
         </aside>
     )
